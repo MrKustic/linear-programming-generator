@@ -1,0 +1,1070 @@
+\documentclass{article}%
+\usepackage[T1]{fontenc}%
+\usepackage[utf8]{inputenc}%
+\usepackage{lmodern}%
+\usepackage{textcomp}%
+\usepackage{lastpage}%
+\usepackage{ragged2e}%
+\usepackage{amsmath}%
+\usepackage{tikz}%
+%
+\usepackage{geometry}%
+\geometry{top=0.5in, bottom=0.5in, left=0.5in, right=0.5in}%
+\usepackage{fontspec}%
+\usepackage[russian]{babel}%
+\setmainfont{Times New Roman}%
+\usepackage{amsmath}%
+%
+\begin{document}%
+\normalsize%
+\begin{center}%
+\begin{Huge}%
+Вариант 1%
+\end{Huge}%
+\end{center}%
+Задача равносильна следующей: %
+\[%
+\left\{\begin{aligned}-x_{1}+7x_{2}+s_{1} & =49 \\2x_{1}-x_{2}+s_{2} & =6 \\x_{1},x_{2},s_{1},s_{2} & \ge 0 \\ \end{aligned}\right.%
+\]%
+\[%
+4x_{1}+x_{2}  \to max%
+\]%
+В качестве начального допустимого решения возьмем %
+$(0, 0).$%
+\begin{flushleft}%
+1{-}я итерация: %
+\newline%
+\newline%
+\renewcommand{\arraystretch}{1.3}%
+\begin{tabular}{|c|cccc|c|}%
+\hline%
+Базис&$x_{1}$&$x_{2}$&$s_{1}$&$s_{2}$&Решение\\%
+\hline%
+$z$&$-4$&$-1$&$0$&$0$&$0$\\%
+\hline%
+$s_{1}$&$-1$&$7$&$1$&$0$&$49$\\%
+$s_{2}$&$2$&$-1$&$0$&$1$&$6$\\%
+\hline%
+\end{tabular}%
+\newline%
+\newline%
+\newline%
+\begin{tabular}{|cccc|}%
+\hline%
+Базис&$x_{1}$&Решение&Отношение\\%
+\hline%
+$s_{1}$&$-1$&$49$&$-49\: (< 0, \: \text{не подходит})$\\%
+$s_{2}$&$2$&$6$&$3\: \text{(Оптимально)}$\\%
+\hline%
+\end{tabular}%
+\newline%
+\newline%
+\newline%
+2{-}я итерация: %
+\newline%
+\newline%
+\renewcommand{\arraystretch}{1.3}%
+\begin{tabular}{|c|cccc|c|}%
+\hline%
+Базис&$x_{1}$&$x_{2}$&$s_{1}$&$s_{2}$&Решение\\%
+\hline%
+$z$&$0$&$-3$&$0$&$2$&$12$\\%
+\hline%
+$s_{1}$&$0$&$\frac{13}{2}$&$1$&$\frac{1}{2}$&$52$\\%
+$x_{1}$&$1$&$-\frac{1}{2}$&$0$&$\frac{1}{2}$&$3$\\%
+\hline%
+\end{tabular}%
+\newline%
+\newline%
+\newline%
+\begin{tabular}{|cccc|}%
+\hline%
+Базис&$x_{2}$&Решение&Отношение\\%
+\hline%
+$s_{1}$&$\frac{13}{2}$&$52$&$8\: \text{(Оптимально)}$\\%
+$x_{1}$&$-\frac{1}{2}$&$3$&$-6\: (< 0, \: \text{не подходит})$\\%
+\hline%
+\end{tabular}%
+\newline%
+\newline%
+\newline%
+3{-}я итерация: %
+\newline%
+\newline%
+\renewcommand{\arraystretch}{1.3}%
+\begin{tabular}{|c|cccc|c|}%
+\hline%
+Базис&$x_{1}$&$x_{2}$&$s_{1}$&$s_{2}$&Решение\\%
+\hline%
+$z$&$0$&$0$&$\frac{6}{13}$&$\frac{29}{13}$&$36$\\%
+\hline%
+$x_{2}$&$0$&$1$&$\frac{2}{13}$&$\frac{1}{13}$&$8$\\%
+$x_{1}$&$1$&$0$&$\frac{1}{13}$&$\frac{7}{13}$&$7$\\%
+\hline%
+\end{tabular}%
+\newline%
+\end{flushleft}%
+Оптимальное решение найдено.%
+\newline%
+\begin{tikzpicture}%
+\path[draw,fill=blue!20] (6.03448275862069,6.8965517241379315) -- (0.0,6.03448275862069) -- (0.0,0.0) -- (2.586206896551724,0.0) -- (6.03448275862069,6.8965517241379315);%
+\node[above right] at (6.03448275862069,6.8965517241379315) {$(7, 8)$};%
+\node[above right] at (0.0,6.03448275862069) {$(0, 7)$};%
+\node[above right] at (0.0,0.0) {$(0, 0)$};%
+\node[above right] at (2.586206896551724,0.0) {$(3, 0)$};%
+\path[->,draw] (-1.7241379310344829,0.0) -- (7.241379310344828,0.0);%
+\node[above] at (7.241379310344828,0.0) {$x_1$};%
+\path[->,draw] (0.0,-1.7241379310344829) -- (0.0,8.275862068965518);%
+\node[right] at (0.0,8.275862068965518) {$x_2$};%
+\path[red,dashed,thick,draw] (7.241379310344828,2.068965517241378) -- (5.689655172413794,8.275862068965518);%
+\end{tikzpicture}%
+\begin{flushright}%
+Ответ: 36, точка {-} (7, 8)%
+\end{flushright}%
+\newpage%
+\begin{center}%
+\begin{Huge}%
+Вариант 2%
+\end{Huge}%
+\end{center}%
+Задача равносильна следующей: %
+\[%
+\left\{\begin{aligned}-x_{1}+6x_{2}+s_{1} & =42 \\8x_{1}+3x_{2}+s_{2} & =72 \\x_{1},x_{2},s_{1},s_{2} & \ge 0 \\ \end{aligned}\right.%
+\]%
+\[%
+2x_{1}+9x_{2}  \to max%
+\]%
+В качестве начального допустимого решения возьмем %
+$(0, 0).$%
+\begin{flushleft}%
+1{-}я итерация: %
+\newline%
+\newline%
+\renewcommand{\arraystretch}{1.3}%
+\begin{tabular}{|c|cccc|c|}%
+\hline%
+Базис&$x_{1}$&$x_{2}$&$s_{1}$&$s_{2}$&Решение\\%
+\hline%
+$z$&$-2$&$-9$&$0$&$0$&$0$\\%
+\hline%
+$s_{1}$&$-1$&$6$&$1$&$0$&$42$\\%
+$s_{2}$&$8$&$3$&$0$&$1$&$72$\\%
+\hline%
+\end{tabular}%
+\newline%
+\newline%
+\newline%
+\begin{tabular}{|cccc|}%
+\hline%
+Базис&$x_{2}$&Решение&Отношение\\%
+\hline%
+$s_{1}$&$6$&$42$&$7\: \text{(Оптимально)}$\\%
+$s_{2}$&$3$&$72$&$24$\\%
+\hline%
+\end{tabular}%
+\newline%
+\newline%
+\newline%
+2{-}я итерация: %
+\newline%
+\newline%
+\renewcommand{\arraystretch}{1.3}%
+\begin{tabular}{|c|cccc|c|}%
+\hline%
+Базис&$x_{1}$&$x_{2}$&$s_{1}$&$s_{2}$&Решение\\%
+\hline%
+$z$&$-\frac{7}{2}$&$0$&$\frac{3}{2}$&$0$&$63$\\%
+\hline%
+$x_{2}$&$-\frac{1}{6}$&$1$&$\frac{1}{6}$&$0$&$7$\\%
+$s_{2}$&$\frac{17}{2}$&$0$&$-\frac{1}{2}$&$1$&$51$\\%
+\hline%
+\end{tabular}%
+\newline%
+\newline%
+\newline%
+\begin{tabular}{|cccc|}%
+\hline%
+Базис&$x_{1}$&Решение&Отношение\\%
+\hline%
+$x_{2}$&$-\frac{1}{6}$&$7$&$-42\: (< 0, \: \text{не подходит})$\\%
+$s_{2}$&$\frac{17}{2}$&$51$&$6\: \text{(Оптимально)}$\\%
+\hline%
+\end{tabular}%
+\newline%
+\newline%
+\newline%
+3{-}я итерация: %
+\newline%
+\newline%
+\renewcommand{\arraystretch}{1.3}%
+\begin{tabular}{|c|cccc|c|}%
+\hline%
+Базис&$x_{1}$&$x_{2}$&$s_{1}$&$s_{2}$&Решение\\%
+\hline%
+$z$&$0$&$0$&$\frac{22}{17}$&$\frac{7}{17}$&$84$\\%
+\hline%
+$x_{2}$&$0$&$1$&$\frac{8}{51}$&$\frac{1}{51}$&$8$\\%
+$x_{1}$&$1$&$0$&$-\frac{1}{17}$&$\frac{2}{17}$&$6$\\%
+\hline%
+\end{tabular}%
+\newline%
+\end{flushleft}%
+Оптимальное решение найдено.%
+\newline%
+\begin{tikzpicture}%
+\path[draw,fill=blue!20] (4.687500000000001,6.250000000000001) -- (0.0,5.468750000000001) -- (0.0,0.0) -- (7.031250000000001,0.0) -- (4.687500000000001,6.250000000000001);%
+\node[above right] at (4.687500000000001,6.250000000000001) {$(6, 8)$};%
+\node[above right] at (0.0,5.468750000000001) {$(0, 7)$};%
+\node[above right] at (0.0,0.0) {$(0, 0)$};%
+\node[above right] at (7.031250000000001,0.0) {$(9, 0)$};%
+\path[->,draw] (-1.5625000000000002,0.0) -- (8.4375,0.0);%
+\node[above] at (8.4375,0.0) {$x_1$};%
+\path[->,draw] (0.0,-1.5625000000000002) -- (0.0,7.500000000000001);%
+\node[right] at (0.0,7.500000000000001) {$x_2$};%
+\path[red,dashed,thick,draw] (8.4375,5.416666666666668) -- (-0.9374999999999968,7.500000000000001);%
+\end{tikzpicture}%
+\begin{flushright}%
+Ответ: 84, точка {-} (6, 8)%
+\end{flushright}%
+\newpage%
+\begin{center}%
+\begin{Huge}%
+Вариант 3%
+\end{Huge}%
+\end{center}%
+Задача равносильна следующей: %
+\[%
+\left\{\begin{aligned}x_{1}+4x_{2}+s_{1} & =12 \\x_{1}-4x_{2}+s_{2} & =4 \\x_{1},x_{2},s_{1},s_{2} & \ge 0 \\ \end{aligned}\right.%
+\]%
+\[%
+4x_{1}+x_{2}  \to max%
+\]%
+В качестве начального допустимого решения возьмем %
+$(0, 0).$%
+\begin{flushleft}%
+1{-}я итерация: %
+\newline%
+\newline%
+\renewcommand{\arraystretch}{1.3}%
+\begin{tabular}{|c|cccc|c|}%
+\hline%
+Базис&$x_{1}$&$x_{2}$&$s_{1}$&$s_{2}$&Решение\\%
+\hline%
+$z$&$-4$&$-1$&$0$&$0$&$0$\\%
+\hline%
+$s_{1}$&$1$&$4$&$1$&$0$&$12$\\%
+$s_{2}$&$1$&$-4$&$0$&$1$&$4$\\%
+\hline%
+\end{tabular}%
+\newline%
+\newline%
+\newline%
+\begin{tabular}{|cccc|}%
+\hline%
+Базис&$x_{1}$&Решение&Отношение\\%
+\hline%
+$s_{1}$&$1$&$12$&$12$\\%
+$s_{2}$&$1$&$4$&$4\: \text{(Оптимально)}$\\%
+\hline%
+\end{tabular}%
+\newline%
+\newline%
+\newline%
+2{-}я итерация: %
+\newline%
+\newline%
+\renewcommand{\arraystretch}{1.3}%
+\begin{tabular}{|c|cccc|c|}%
+\hline%
+Базис&$x_{1}$&$x_{2}$&$s_{1}$&$s_{2}$&Решение\\%
+\hline%
+$z$&$0$&$-17$&$0$&$4$&$16$\\%
+\hline%
+$s_{1}$&$0$&$8$&$1$&$-1$&$8$\\%
+$x_{1}$&$1$&$-4$&$0$&$1$&$4$\\%
+\hline%
+\end{tabular}%
+\newline%
+\newline%
+\newline%
+\begin{tabular}{|cccc|}%
+\hline%
+Базис&$x_{2}$&Решение&Отношение\\%
+\hline%
+$s_{1}$&$8$&$8$&$1\: \text{(Оптимально)}$\\%
+$x_{1}$&$-4$&$4$&$-1\: (< 0, \: \text{не подходит})$\\%
+\hline%
+\end{tabular}%
+\newline%
+\newline%
+\newline%
+3{-}я итерация: %
+\newline%
+\newline%
+\renewcommand{\arraystretch}{1.3}%
+\begin{tabular}{|c|cccc|c|}%
+\hline%
+Базис&$x_{1}$&$x_{2}$&$s_{1}$&$s_{2}$&Решение\\%
+\hline%
+$z$&$0$&$0$&$\frac{17}{8}$&$\frac{15}{8}$&$33$\\%
+\hline%
+$x_{2}$&$0$&$1$&$\frac{1}{8}$&$-\frac{1}{8}$&$1$\\%
+$x_{1}$&$1$&$0$&$\frac{1}{2}$&$\frac{1}{2}$&$8$\\%
+\hline%
+\end{tabular}%
+\newline%
+\end{flushleft}%
+Оптимальное решение найдено.%
+\newline%
+\begin{tikzpicture}%
+\path[draw,fill=blue!20] (6.8965517241379315,0.8620689655172414) -- (0.0,2.586206896551724) -- (0.0,0.0) -- (3.4482758620689657,0.0) -- (6.8965517241379315,0.8620689655172414);%
+\node[above right] at (6.8965517241379315,0.8620689655172414) {$(8, 1)$};%
+\node[above right] at (0.0,2.586206896551724) {$(0, 3)$};%
+\node[above right] at (0.0,0.0) {$(0, 0)$};%
+\node[above right] at (3.4482758620689657,0.0) {$(4, 0)$};%
+\path[->,draw] (-1.7241379310344829,0.0) -- (8.275862068965518,0.0);%
+\node[above] at (8.275862068965518,0.0) {$x_1$};%
+\path[->,draw] (0.0,-1.7241379310344829) -- (0.0,3.103448275862069);%
+\node[right] at (0.0,3.103448275862069) {$x_2$};%
+\path[red,dashed,thick,draw] (7.543103448275863,-1.7241379310344829) -- (6.336206896551724,3.103448275862069);%
+\end{tikzpicture}%
+\begin{flushright}%
+Ответ: 33, точка {-} (8, 1)%
+\end{flushright}%
+\newpage%
+\begin{center}%
+\begin{Huge}%
+Вариант 4%
+\end{Huge}%
+\end{center}%
+Задача равносильна следующей: %
+\[%
+\left\{\begin{aligned}-2x_{1}+x_{2}+s_{1} & =3 \\7x_{1}+3x_{2}+s_{2} & =35 \\x_{1},x_{2},s_{1},s_{2} & \ge 0 \\ \end{aligned}\right.%
+\]%
+\[%
+x_{1}+x_{2}  \to max%
+\]%
+В качестве начального допустимого решения возьмем %
+$(0, 0).$%
+\begin{flushleft}%
+1{-}я итерация: %
+\newline%
+\newline%
+\renewcommand{\arraystretch}{1.3}%
+\begin{tabular}{|c|cccc|c|}%
+\hline%
+Базис&$x_{1}$&$x_{2}$&$s_{1}$&$s_{2}$&Решение\\%
+\hline%
+$z$&$-1$&$-1$&$0$&$0$&$0$\\%
+\hline%
+$s_{1}$&$-2$&$1$&$1$&$0$&$3$\\%
+$s_{2}$&$7$&$3$&$0$&$1$&$35$\\%
+\hline%
+\end{tabular}%
+\newline%
+\newline%
+\newline%
+\begin{tabular}{|cccc|}%
+\hline%
+Базис&$x_{1}$&Решение&Отношение\\%
+\hline%
+$s_{1}$&$-2$&$3$&$-\frac{3}{2}\: (< 0, \: \text{не подходит})$\\%
+$s_{2}$&$7$&$35$&$5\: \text{(Оптимально)}$\\%
+\hline%
+\end{tabular}%
+\newline%
+\newline%
+\newline%
+2{-}я итерация: %
+\newline%
+\newline%
+\renewcommand{\arraystretch}{1.3}%
+\begin{tabular}{|c|cccc|c|}%
+\hline%
+Базис&$x_{1}$&$x_{2}$&$s_{1}$&$s_{2}$&Решение\\%
+\hline%
+$z$&$0$&$-\frac{4}{7}$&$0$&$\frac{1}{7}$&$5$\\%
+\hline%
+$s_{1}$&$0$&$\frac{13}{7}$&$1$&$\frac{2}{7}$&$13$\\%
+$x_{1}$&$1$&$\frac{3}{7}$&$0$&$\frac{1}{7}$&$5$\\%
+\hline%
+\end{tabular}%
+\newline%
+\newline%
+\newline%
+\begin{tabular}{|cccc|}%
+\hline%
+Базис&$x_{2}$&Решение&Отношение\\%
+\hline%
+$s_{1}$&$\frac{13}{7}$&$13$&$7\: \text{(Оптимально)}$\\%
+$x_{1}$&$\frac{3}{7}$&$5$&$\frac{35}{3}$\\%
+\hline%
+\end{tabular}%
+\newline%
+\newline%
+\newline%
+3{-}я итерация: %
+\newline%
+\newline%
+\renewcommand{\arraystretch}{1.3}%
+\begin{tabular}{|c|cccc|c|}%
+\hline%
+Базис&$x_{1}$&$x_{2}$&$s_{1}$&$s_{2}$&Решение\\%
+\hline%
+$z$&$0$&$0$&$\frac{4}{13}$&$\frac{3}{13}$&$9$\\%
+\hline%
+$x_{2}$&$0$&$1$&$\frac{7}{13}$&$\frac{2}{13}$&$7$\\%
+$x_{1}$&$1$&$0$&$-\frac{3}{13}$&$\frac{1}{13}$&$2$\\%
+\hline%
+\end{tabular}%
+\newline%
+\end{flushleft}%
+Оптимальное решение найдено.%
+\newline%
+\begin{tikzpicture}%
+\path[draw,fill=blue!20] (1.923076923076923,6.73076923076923) -- (0.0,2.884615384615384) -- (0.0,0.0) -- (4.8076923076923075,0.0) -- (1.923076923076923,6.73076923076923);%
+\node[above right] at (1.923076923076923,6.73076923076923) {$(2, 7)$};%
+\node[above right] at (0.0,2.884615384615384) {$(0, 3)$};%
+\node[above right] at (0.0,0.0) {$(0, 0)$};%
+\node[above right] at (4.8076923076923075,0.0) {$(5, 0)$};%
+\path[->,draw] (-1.923076923076923,0.0) -- (5.769230769230768,0.0);%
+\node[above] at (5.769230769230768,0.0) {$x_1$};%
+\path[->,draw] (0.0,-1.923076923076923) -- (0.0,8.076923076923077);%
+\node[right] at (0.0,8.076923076923077) {$x_2$};%
+\path[red,dashed,thick,draw] (5.769230769230768,2.884615384615384) -- (0.5769230769230765,8.076923076923077);%
+\end{tikzpicture}%
+\begin{flushright}%
+Ответ: 9, точка {-} (2, 7)%
+\end{flushright}%
+\newpage%
+\begin{center}%
+\begin{Huge}%
+Вариант 5%
+\end{Huge}%
+\end{center}%
+Задача равносильна следующей: %
+\[%
+\left\{\begin{aligned}x_{1}+5x_{2}+s_{1} & =50 \\9x_{1}-4x_{2}+s_{2} & =9 \\x_{1},x_{2},s_{1},s_{2} & \ge 0 \\ \end{aligned}\right.%
+\]%
+\[%
+9x_{1}+2x_{2}  \to max%
+\]%
+В качестве начального допустимого решения возьмем %
+$(0, 0).$%
+\begin{flushleft}%
+1{-}я итерация: %
+\newline%
+\newline%
+\renewcommand{\arraystretch}{1.3}%
+\begin{tabular}{|c|cccc|c|}%
+\hline%
+Базис&$x_{1}$&$x_{2}$&$s_{1}$&$s_{2}$&Решение\\%
+\hline%
+$z$&$-9$&$-2$&$0$&$0$&$0$\\%
+\hline%
+$s_{1}$&$1$&$5$&$1$&$0$&$50$\\%
+$s_{2}$&$9$&$-4$&$0$&$1$&$9$\\%
+\hline%
+\end{tabular}%
+\newline%
+\newline%
+\newline%
+\begin{tabular}{|cccc|}%
+\hline%
+Базис&$x_{1}$&Решение&Отношение\\%
+\hline%
+$s_{1}$&$1$&$50$&$50$\\%
+$s_{2}$&$9$&$9$&$1\: \text{(Оптимально)}$\\%
+\hline%
+\end{tabular}%
+\newline%
+\newline%
+\newline%
+2{-}я итерация: %
+\newline%
+\newline%
+\renewcommand{\arraystretch}{1.3}%
+\begin{tabular}{|c|cccc|c|}%
+\hline%
+Базис&$x_{1}$&$x_{2}$&$s_{1}$&$s_{2}$&Решение\\%
+\hline%
+$z$&$0$&$-6$&$0$&$1$&$9$\\%
+\hline%
+$s_{1}$&$0$&$\frac{49}{9}$&$1$&$-\frac{1}{9}$&$49$\\%
+$x_{1}$&$1$&$-\frac{4}{9}$&$0$&$\frac{1}{9}$&$1$\\%
+\hline%
+\end{tabular}%
+\newline%
+\newline%
+\newline%
+\begin{tabular}{|cccc|}%
+\hline%
+Базис&$x_{2}$&Решение&Отношение\\%
+\hline%
+$s_{1}$&$\frac{49}{9}$&$49$&$9\: \text{(Оптимально)}$\\%
+$x_{1}$&$-\frac{4}{9}$&$1$&$-\frac{9}{4}\: (< 0, \: \text{не подходит})$\\%
+\hline%
+\end{tabular}%
+\newline%
+\newline%
+\newline%
+3{-}я итерация: %
+\newline%
+\newline%
+\renewcommand{\arraystretch}{1.3}%
+\begin{tabular}{|c|cccc|c|}%
+\hline%
+Базис&$x_{1}$&$x_{2}$&$s_{1}$&$s_{2}$&Решение\\%
+\hline%
+$z$&$0$&$0$&$\frac{54}{49}$&$\frac{43}{49}$&$63$\\%
+\hline%
+$x_{2}$&$0$&$1$&$\frac{9}{49}$&$-\frac{1}{49}$&$9$\\%
+$x_{1}$&$1$&$0$&$\frac{4}{49}$&$\frac{5}{49}$&$5$\\%
+\hline%
+\end{tabular}%
+\newline%
+\end{flushleft}%
+Оптимальное решение найдено.%
+\newline%
+\begin{tikzpicture}%
+\path[draw,fill=blue!20] (3.5714285714285716,6.428571428571429) -- (0.0,7.142857142857143) -- (0.0,0.0) -- (0.7142857142857143,0.0) -- (3.5714285714285716,6.428571428571429);%
+\node[above right] at (3.5714285714285716,6.428571428571429) {$(5, 9)$};%
+\node[above right] at (0.0,7.142857142857143) {$(0, 10)$};%
+\node[above right] at (0.0,0.0) {$(0, 0)$};%
+\node[above right] at (0.7142857142857143,0.0) {$(1, 0)$};%
+\path[->,draw] (-1.4285714285714286,0.0) -- (4.285714285714286,0.0);%
+\node[above] at (4.285714285714286,0.0) {$x_1$};%
+\path[->,draw] (0.0,-1.4285714285714286) -- (0.0,8.571428571428571);%
+\node[right] at (0.0,8.571428571428571) {$x_2$};%
+\path[red,dashed,thick,draw] (4.285714285714286,3.2142857142857144) -- (3.095238095238095,8.571428571428571);%
+\end{tikzpicture}%
+\begin{flushright}%
+Ответ: 63, точка {-} (5, 9)%
+\end{flushright}%
+\newpage%
+\begin{center}%
+\begin{Huge}%
+Вариант 6%
+\end{Huge}%
+\end{center}%
+Задача равносильна следующей: %
+\[%
+\left\{\begin{aligned}6x_{1}+7x_{2}+s_{1} & =48 \\x_{2}+s_{2} & =6 \\x_{1},x_{2},s_{1},s_{2} & \ge 0 \\ \end{aligned}\right.%
+\]%
+\[%
+2x_{1}+3x_{2}  \to max%
+\]%
+В качестве начального допустимого решения возьмем %
+$(0, 0).$%
+\begin{flushleft}%
+1{-}я итерация: %
+\newline%
+\newline%
+\renewcommand{\arraystretch}{1.3}%
+\begin{tabular}{|c|cccc|c|}%
+\hline%
+Базис&$x_{1}$&$x_{2}$&$s_{1}$&$s_{2}$&Решение\\%
+\hline%
+$z$&$-2$&$-3$&$0$&$0$&$0$\\%
+\hline%
+$s_{1}$&$6$&$7$&$1$&$0$&$48$\\%
+$s_{2}$&$0$&$1$&$0$&$1$&$6$\\%
+\hline%
+\end{tabular}%
+\newline%
+\newline%
+\newline%
+\begin{tabular}{|cccc|}%
+\hline%
+Базис&$x_{2}$&Решение&Отношение\\%
+\hline%
+$s_{1}$&$7$&$48$&$\frac{48}{7}$\\%
+$s_{2}$&$1$&$6$&$6\: \text{(Оптимально)}$\\%
+\hline%
+\end{tabular}%
+\newline%
+\newline%
+\newline%
+2{-}я итерация: %
+\newline%
+\newline%
+\renewcommand{\arraystretch}{1.3}%
+\begin{tabular}{|c|cccc|c|}%
+\hline%
+Базис&$x_{1}$&$x_{2}$&$s_{1}$&$s_{2}$&Решение\\%
+\hline%
+$z$&$-2$&$0$&$0$&$3$&$18$\\%
+\hline%
+$s_{1}$&$6$&$0$&$1$&$-7$&$6$\\%
+$x_{2}$&$0$&$1$&$0$&$1$&$6$\\%
+\hline%
+\end{tabular}%
+\newline%
+\newline%
+\newline%
+\begin{tabular}{|cccc|}%
+\hline%
+Базис&$x_{1}$&Решение&Отношение\\%
+\hline%
+$s_{1}$&$6$&$6$&$1\: \text{(Оптимально)}$\\%
+$x_{2}$&$0$&$6$&$\infty \: \text{(не подходит)}$\\%
+\hline%
+\end{tabular}%
+\newline%
+\newline%
+\newline%
+3{-}я итерация: %
+\newline%
+\newline%
+\renewcommand{\arraystretch}{1.3}%
+\begin{tabular}{|c|cccc|c|}%
+\hline%
+Базис&$x_{1}$&$x_{2}$&$s_{1}$&$s_{2}$&Решение\\%
+\hline%
+$z$&$0$&$0$&$\frac{1}{3}$&$\frac{2}{3}$&$20$\\%
+\hline%
+$x_{1}$&$1$&$0$&$\frac{1}{6}$&$-\frac{7}{6}$&$1$\\%
+$x_{2}$&$0$&$1$&$0$&$1$&$6$\\%
+\hline%
+\end{tabular}%
+\newline%
+\end{flushleft}%
+Оптимальное решение найдено.%
+\newline%
+\begin{tikzpicture}%
+\path[draw,fill=blue!20] (0.0,5.172413793103448) -- (0.0,0.0) -- (6.8965517241379315,0.0) -- (0.8620689655172414,5.172413793103448) -- (0.0,5.172413793103448);%
+\node[above right] at (0.0,5.172413793103448) {$(0, 6)$};%
+\node[above right] at (0.0,0.0) {$(0, 0)$};%
+\node[above right] at (6.8965517241379315,0.0) {$(8, 0)$};%
+\node[above right] at (0.8620689655172414,5.172413793103448) {$(1, 6)$};%
+\path[->,draw] (-1.7241379310344829,0.0) -- (8.275862068965518,0.0);%
+\node[above] at (8.275862068965518,0.0) {$x_1$};%
+\path[->,draw] (0.0,-1.7241379310344829) -- (0.0,6.206896551724138);%
+\node[right] at (0.0,6.206896551724138) {$x_2$};%
+\path[red,dashed,thick,draw] (8.275862068965518,0.22988505747126456) -- (-0.6896551724137923,6.206896551724138);%
+\end{tikzpicture}%
+\begin{flushright}%
+Ответ: 20, точка {-} (1, 6)%
+\end{flushright}%
+\newpage%
+\begin{center}%
+\begin{Huge}%
+Вариант 7%
+\end{Huge}%
+\end{center}%
+Задача равносильна следующей: %
+\[%
+\left\{\begin{aligned}2x_{1}+5x_{2}+s_{1} & =45 \\7x_{1}-2x_{2}+s_{2} & =21 \\x_{1},x_{2},s_{1},s_{2} & \ge 0 \\ \end{aligned}\right.%
+\]%
+\[%
+9x_{1}+10x_{2}  \to max%
+\]%
+В качестве начального допустимого решения возьмем %
+$(0, 0).$%
+\begin{flushleft}%
+1{-}я итерация: %
+\newline%
+\newline%
+\renewcommand{\arraystretch}{1.3}%
+\begin{tabular}{|c|cccc|c|}%
+\hline%
+Базис&$x_{1}$&$x_{2}$&$s_{1}$&$s_{2}$&Решение\\%
+\hline%
+$z$&$-9$&$-10$&$0$&$0$&$0$\\%
+\hline%
+$s_{1}$&$2$&$5$&$1$&$0$&$45$\\%
+$s_{2}$&$7$&$-2$&$0$&$1$&$21$\\%
+\hline%
+\end{tabular}%
+\newline%
+\newline%
+\newline%
+\begin{tabular}{|cccc|}%
+\hline%
+Базис&$x_{2}$&Решение&Отношение\\%
+\hline%
+$s_{1}$&$5$&$45$&$9\: \text{(Оптимально)}$\\%
+$s_{2}$&$-2$&$21$&$-\frac{21}{2}\: (< 0, \: \text{не подходит})$\\%
+\hline%
+\end{tabular}%
+\newline%
+\newline%
+\newline%
+2{-}я итерация: %
+\newline%
+\newline%
+\renewcommand{\arraystretch}{1.3}%
+\begin{tabular}{|c|cccc|c|}%
+\hline%
+Базис&$x_{1}$&$x_{2}$&$s_{1}$&$s_{2}$&Решение\\%
+\hline%
+$z$&$-5$&$0$&$2$&$0$&$90$\\%
+\hline%
+$x_{2}$&$\frac{2}{5}$&$1$&$\frac{1}{5}$&$0$&$9$\\%
+$s_{2}$&$\frac{39}{5}$&$0$&$\frac{2}{5}$&$1$&$39$\\%
+\hline%
+\end{tabular}%
+\newline%
+\newline%
+\newline%
+\begin{tabular}{|cccc|}%
+\hline%
+Базис&$x_{1}$&Решение&Отношение\\%
+\hline%
+$x_{2}$&$\frac{2}{5}$&$9$&$\frac{45}{2}$\\%
+$s_{2}$&$\frac{39}{5}$&$39$&$5\: \text{(Оптимально)}$\\%
+\hline%
+\end{tabular}%
+\newline%
+\newline%
+\newline%
+3{-}я итерация: %
+\newline%
+\newline%
+\renewcommand{\arraystretch}{1.3}%
+\begin{tabular}{|c|cccc|c|}%
+\hline%
+Базис&$x_{1}$&$x_{2}$&$s_{1}$&$s_{2}$&Решение\\%
+\hline%
+$z$&$0$&$0$&$\frac{88}{39}$&$\frac{25}{39}$&$115$\\%
+\hline%
+$x_{2}$&$0$&$1$&$\frac{7}{39}$&$-\frac{2}{39}$&$7$\\%
+$x_{1}$&$1$&$0$&$\frac{2}{39}$&$\frac{5}{39}$&$5$\\%
+\hline%
+\end{tabular}%
+\newline%
+\end{flushleft}%
+Оптимальное решение найдено.%
+\newline%
+\begin{tikzpicture}%
+\path[draw,fill=blue!20] (3.9062500000000004,5.468750000000001) -- (0.0,7.031250000000001) -- (0.0,0.0) -- (2.3437500000000004,0.0) -- (3.9062500000000004,5.468750000000001);%
+\node[above right] at (3.9062500000000004,5.468750000000001) {$(5, 7)$};%
+\node[above right] at (0.0,7.031250000000001) {$(0, 9)$};%
+\node[above right] at (0.0,0.0) {$(0, 0)$};%
+\node[above right] at (2.3437500000000004,0.0) {$(3, 0)$};%
+\path[->,draw] (-1.5625000000000002,0.0) -- (4.687500000000001,0.0);%
+\node[above] at (4.687500000000001,0.0) {$x_1$};%
+\path[->,draw] (0.0,-1.5625000000000002) -- (0.0,8.4375);%
+\node[right] at (0.0,8.4375) {$x_2$};%
+\path[red,dashed,thick,draw] (4.687500000000001,4.765625) -- (0.6076388888888902,8.4375);%
+\end{tikzpicture}%
+\begin{flushright}%
+Ответ: 115, точка {-} (5, 7)%
+\end{flushright}%
+\newpage%
+\begin{center}%
+\begin{Huge}%
+Вариант 8%
+\end{Huge}%
+\end{center}%
+Задача равносильна следующей: %
+\[%
+\left\{\begin{aligned}4x_{1}+3x_{2}+s_{1} & =32 \\x_{2}+s_{2} & =8 \\x_{1},x_{2},s_{1},s_{2} & \ge 0 \\ \end{aligned}\right.%
+\]%
+\[%
+6x_{1}+5x_{2}  \to max%
+\]%
+В качестве начального допустимого решения возьмем %
+$(0, 0).$%
+\begin{flushleft}%
+1{-}я итерация: %
+\newline%
+\newline%
+\renewcommand{\arraystretch}{1.3}%
+\begin{tabular}{|c|cccc|c|}%
+\hline%
+Базис&$x_{1}$&$x_{2}$&$s_{1}$&$s_{2}$&Решение\\%
+\hline%
+$z$&$-6$&$-5$&$0$&$0$&$0$\\%
+\hline%
+$s_{1}$&$4$&$3$&$1$&$0$&$32$\\%
+$s_{2}$&$0$&$1$&$0$&$1$&$8$\\%
+\hline%
+\end{tabular}%
+\newline%
+\newline%
+\newline%
+\begin{tabular}{|cccc|}%
+\hline%
+Базис&$x_{1}$&Решение&Отношение\\%
+\hline%
+$s_{1}$&$4$&$32$&$8\: \text{(Оптимально)}$\\%
+$s_{2}$&$0$&$8$&$\infty \: \text{(не подходит)}$\\%
+\hline%
+\end{tabular}%
+\newline%
+\newline%
+\newline%
+2{-}я итерация: %
+\newline%
+\newline%
+\renewcommand{\arraystretch}{1.3}%
+\begin{tabular}{|c|cccc|c|}%
+\hline%
+Базис&$x_{1}$&$x_{2}$&$s_{1}$&$s_{2}$&Решение\\%
+\hline%
+$z$&$0$&$-\frac{1}{2}$&$\frac{3}{2}$&$0$&$48$\\%
+\hline%
+$x_{1}$&$1$&$\frac{3}{4}$&$\frac{1}{4}$&$0$&$8$\\%
+$s_{2}$&$0$&$1$&$0$&$1$&$8$\\%
+\hline%
+\end{tabular}%
+\newline%
+\newline%
+\newline%
+\begin{tabular}{|cccc|}%
+\hline%
+Базис&$x_{2}$&Решение&Отношение\\%
+\hline%
+$x_{1}$&$\frac{3}{4}$&$8$&$\frac{32}{3}$\\%
+$s_{2}$&$1$&$8$&$8\: \text{(Оптимально)}$\\%
+\hline%
+\end{tabular}%
+\newline%
+\newline%
+\newline%
+3{-}я итерация: %
+\newline%
+\newline%
+\renewcommand{\arraystretch}{1.3}%
+\begin{tabular}{|c|cccc|c|}%
+\hline%
+Базис&$x_{1}$&$x_{2}$&$s_{1}$&$s_{2}$&Решение\\%
+\hline%
+$z$&$0$&$0$&$\frac{3}{2}$&$\frac{1}{2}$&$52$\\%
+\hline%
+$x_{1}$&$1$&$0$&$\frac{1}{4}$&$-\frac{3}{4}$&$2$\\%
+$x_{2}$&$0$&$1$&$0$&$1$&$8$\\%
+\hline%
+\end{tabular}%
+\newline%
+\end{flushleft}%
+Оптимальное решение найдено.%
+\newline%
+\begin{tikzpicture}%
+\path[draw,fill=blue!20] (0.0,0.0) -- (6.8965517241379315,0.0) -- (1.7241379310344829,6.8965517241379315) -- (0.0,6.8965517241379315) -- (0.0,0.0);%
+\node[above right] at (0.0,0.0) {$(0, 0)$};%
+\node[above right] at (6.8965517241379315,0.0) {$(8, 0)$};%
+\node[above right] at (1.7241379310344829,6.8965517241379315) {$(2, 8)$};%
+\node[above right] at (0.0,6.8965517241379315) {$(0, 8)$};%
+\path[->,draw] (-1.7241379310344829,0.0) -- (8.275862068965518,0.0);%
+\node[above] at (8.275862068965518,0.0) {$x_1$};%
+\path[->,draw] (0.0,-1.7241379310344829) -- (0.0,8.275862068965518);%
+\node[right] at (0.0,8.275862068965518) {$x_2$};%
+\path[red,dashed,thick,draw] (8.275862068965518,-0.9655172413793094) -- (0.5747126436781609,8.275862068965518);%
+\end{tikzpicture}%
+\begin{flushright}%
+Ответ: 52, точка {-} (2, 8)%
+\end{flushright}%
+\newpage%
+\begin{center}%
+\begin{Huge}%
+Вариант 9%
+\end{Huge}%
+\end{center}%
+Задача равносильна следующей: %
+\[%
+\left\{\begin{aligned}-4x_{1}+5x_{2}+s_{1} & =5 \\9x_{1}-2x_{2}+s_{2} & =72 \\x_{1},x_{2},s_{1},s_{2} & \ge 0 \\ \end{aligned}\right.%
+\]%
+\[%
+9x_{1}+x_{2}  \to max%
+\]%
+В качестве начального допустимого решения возьмем %
+$(0, 0).$%
+\begin{flushleft}%
+1{-}я итерация: %
+\newline%
+\newline%
+\renewcommand{\arraystretch}{1.3}%
+\begin{tabular}{|c|cccc|c|}%
+\hline%
+Базис&$x_{1}$&$x_{2}$&$s_{1}$&$s_{2}$&Решение\\%
+\hline%
+$z$&$-9$&$-1$&$0$&$0$&$0$\\%
+\hline%
+$s_{1}$&$-4$&$5$&$1$&$0$&$5$\\%
+$s_{2}$&$9$&$-2$&$0$&$1$&$72$\\%
+\hline%
+\end{tabular}%
+\newline%
+\newline%
+\newline%
+\begin{tabular}{|cccc|}%
+\hline%
+Базис&$x_{1}$&Решение&Отношение\\%
+\hline%
+$s_{1}$&$-4$&$5$&$-\frac{5}{4}\: (< 0, \: \text{не подходит})$\\%
+$s_{2}$&$9$&$72$&$8\: \text{(Оптимально)}$\\%
+\hline%
+\end{tabular}%
+\newline%
+\newline%
+\newline%
+2{-}я итерация: %
+\newline%
+\newline%
+\renewcommand{\arraystretch}{1.3}%
+\begin{tabular}{|c|cccc|c|}%
+\hline%
+Базис&$x_{1}$&$x_{2}$&$s_{1}$&$s_{2}$&Решение\\%
+\hline%
+$z$&$0$&$-3$&$0$&$1$&$72$\\%
+\hline%
+$s_{1}$&$0$&$\frac{37}{9}$&$1$&$\frac{4}{9}$&$37$\\%
+$x_{1}$&$1$&$-\frac{2}{9}$&$0$&$\frac{1}{9}$&$8$\\%
+\hline%
+\end{tabular}%
+\newline%
+\newline%
+\newline%
+\begin{tabular}{|cccc|}%
+\hline%
+Базис&$x_{2}$&Решение&Отношение\\%
+\hline%
+$s_{1}$&$\frac{37}{9}$&$37$&$9\: \text{(Оптимально)}$\\%
+$x_{1}$&$-\frac{2}{9}$&$8$&$-36\: (< 0, \: \text{не подходит})$\\%
+\hline%
+\end{tabular}%
+\newline%
+\newline%
+\newline%
+3{-}я итерация: %
+\newline%
+\newline%
+\renewcommand{\arraystretch}{1.3}%
+\begin{tabular}{|c|cccc|c|}%
+\hline%
+Базис&$x_{1}$&$x_{2}$&$s_{1}$&$s_{2}$&Решение\\%
+\hline%
+$z$&$0$&$0$&$\frac{27}{37}$&$\frac{49}{37}$&$99$\\%
+\hline%
+$x_{2}$&$0$&$1$&$\frac{9}{37}$&$\frac{4}{37}$&$9$\\%
+$x_{1}$&$1$&$0$&$\frac{2}{37}$&$\frac{5}{37}$&$10$\\%
+\hline%
+\end{tabular}%
+\newline%
+\end{flushleft}%
+Оптимальное решение найдено.%
+\newline%
+\begin{tikzpicture}%
+\path[draw,fill=blue!20] (7.142857142857143,6.428571428571429) -- (0.0,0.7142857142857143) -- (0.0,0.0) -- (5.714285714285714,0.0) -- (7.142857142857143,6.428571428571429);%
+\node[above right] at (7.142857142857143,6.428571428571429) {$(10, 9)$};%
+\node[above right] at (0.0,0.7142857142857143) {$(0, 1)$};%
+\node[above right] at (0.0,0.0) {$(0, 0)$};%
+\node[above right] at (5.714285714285714,0.0) {$(8, 0)$};%
+\path[->,draw] (-1.4285714285714286,0.0) -- (8.571428571428571,0.0);%
+\node[above] at (8.571428571428571,0.0) {$x_1$};%
+\path[->,draw] (0.0,-1.4285714285714286) -- (0.0,7.7142857142857135);%
+\node[right] at (0.0,7.7142857142857135) {$x_2$};%
+\path[red,dashed,thick,draw] (8.015873015873016,-1.4285714285714286) -- (7.000000000000001,7.7142857142857135);%
+\end{tikzpicture}%
+\begin{flushright}%
+Ответ: 99, точка {-} (10, 9)%
+\end{flushright}%
+\newpage%
+\begin{center}%
+\begin{Huge}%
+Вариант 10%
+\end{Huge}%
+\end{center}%
+Задача равносильна следующей: %
+\[%
+\left\{\begin{aligned}x_{1}+10x_{2}+s_{1} & =50 \\4x_{1}-x_{2}+s_{2} & =36 \\x_{1},x_{2},s_{1},s_{2} & \ge 0 \\ \end{aligned}\right.%
+\]%
+\[%
+5x_{1}-x_{2}  \to max%
+\]%
+В качестве начального допустимого решения возьмем %
+$(0, 0).$%
+\begin{flushleft}%
+1{-}я итерация: %
+\newline%
+\newline%
+\renewcommand{\arraystretch}{1.3}%
+\begin{tabular}{|c|cccc|c|}%
+\hline%
+Базис&$x_{1}$&$x_{2}$&$s_{1}$&$s_{2}$&Решение\\%
+\hline%
+$z$&$-5$&$1$&$0$&$0$&$0$\\%
+\hline%
+$s_{1}$&$1$&$10$&$1$&$0$&$50$\\%
+$s_{2}$&$4$&$-1$&$0$&$1$&$36$\\%
+\hline%
+\end{tabular}%
+\newline%
+\newline%
+\newline%
+\begin{tabular}{|cccc|}%
+\hline%
+Базис&$x_{1}$&Решение&Отношение\\%
+\hline%
+$s_{1}$&$1$&$50$&$50$\\%
+$s_{2}$&$4$&$36$&$9\: \text{(Оптимально)}$\\%
+\hline%
+\end{tabular}%
+\newline%
+\newline%
+\newline%
+2{-}я итерация: %
+\newline%
+\newline%
+\renewcommand{\arraystretch}{1.3}%
+\begin{tabular}{|c|cccc|c|}%
+\hline%
+Базис&$x_{1}$&$x_{2}$&$s_{1}$&$s_{2}$&Решение\\%
+\hline%
+$z$&$0$&$-\frac{1}{4}$&$0$&$\frac{5}{4}$&$45$\\%
+\hline%
+$s_{1}$&$0$&$\frac{41}{4}$&$1$&$-\frac{1}{4}$&$41$\\%
+$x_{1}$&$1$&$-\frac{1}{4}$&$0$&$\frac{1}{4}$&$9$\\%
+\hline%
+\end{tabular}%
+\newline%
+\newline%
+\newline%
+\begin{tabular}{|cccc|}%
+\hline%
+Базис&$x_{2}$&Решение&Отношение\\%
+\hline%
+$s_{1}$&$\frac{41}{4}$&$41$&$4\: \text{(Оптимально)}$\\%
+$x_{1}$&$-\frac{1}{4}$&$9$&$-36\: (< 0, \: \text{не подходит})$\\%
+\hline%
+\end{tabular}%
+\newline%
+\newline%
+\newline%
+3{-}я итерация: %
+\newline%
+\newline%
+\renewcommand{\arraystretch}{1.3}%
+\begin{tabular}{|c|cccc|c|}%
+\hline%
+Базис&$x_{1}$&$x_{2}$&$s_{1}$&$s_{2}$&Решение\\%
+\hline%
+$z$&$0$&$0$&$\frac{1}{41}$&$\frac{51}{41}$&$46$\\%
+\hline%
+$x_{2}$&$0$&$1$&$\frac{4}{41}$&$-\frac{1}{41}$&$4$\\%
+$x_{1}$&$1$&$0$&$\frac{1}{41}$&$\frac{10}{41}$&$10$\\%
+\hline%
+\end{tabular}%
+\newline%
+\end{flushleft}%
+Оптимальное решение найдено.%
+\newline%
+\begin{tikzpicture}%
+\path[draw,fill=blue!20] (7.142857142857143,2.857142857142857) -- (0.0,3.5714285714285716) -- (0.0,0.0) -- (6.428571428571429,0.0) -- (7.142857142857143,2.857142857142857);%
+\node[above right] at (7.142857142857143,2.857142857142857) {$(10, 4)$};%
+\node[above right] at (0.0,3.5714285714285716) {$(0, 5)$};%
+\node[above right] at (0.0,0.0) {$(0, 0)$};%
+\node[above right] at (6.428571428571429,0.0) {$(9, 0)$};%
+\path[->,draw] (-1.4285714285714286,0.0) -- (8.571428571428571,0.0);%
+\node[above] at (8.571428571428571,0.0) {$x_1$};%
+\path[->,draw] (0.0,-1.4285714285714286) -- (0.0,4.285714285714286);%
+\node[right] at (0.0,4.285714285714286) {$x_2$};%
+\path[red,dashed,thick,draw] (6.2857142857142865,-1.4285714285714286) -- (7.428571428571429,4.285714285714286);%
+\end{tikzpicture}%
+\begin{flushright}%
+Ответ: 46, точка {-} (10, 4)%
+\end{flushright}%
+\newpage%
+\end{document}
