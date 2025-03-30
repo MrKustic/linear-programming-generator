@@ -20,12 +20,12 @@ jobs:
           pip install pyinstaller -r requirements.txt
       - name: Build Windows EXE
         run: |
-          pyinstaller --onefile --noconsole --name LP_Generator-Windows src/main.py
+          pyinstaller --onefile --noconsole --name LinearProgrammingGenerator-Windows src/gui-app.py
       - name: Upload Windows artifact
         uses: actions/upload-artifact@v4
         with:
           name: windows-build
-          path: dist/LP_Generator-Windows.exe
+          path: dist/LinearProgrammingGenerator-Windows.exe
 
   build-linux:
     runs-on: ubuntu-latest
@@ -42,12 +42,12 @@ jobs:
           pip install pyinstaller -r requirements.txt
       - name: Build Linux binary
         run: |
-          pyinstaller --onefile --name LP_Generator-Linux src/main.py
+          pyinstaller --onefile --name LinearProgrammingGenerator-Linux src/gui-app.py
       - name: Upload Linux artifact
         uses: actions/upload-artifact@v4
         with:
           name: linux-build
-          path: dist/LP_Generator-Linux
+          path: dist/LinearProgrammingGenerator-Linux
 
   create-release:
     needs: [build-windows, build-linux]
@@ -60,7 +60,7 @@ jobs:
           path: dist
 
       - name: Download Linux artifact
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: linux-build
           path: dist
@@ -70,10 +70,10 @@ jobs:
         with:
           tag_name: ${{ github.ref }}
           files: |
-            dist/LP_Generator-Windows.exe
-            dist/LP_Generator-Linux
+            dist/LinearProgrammingGenerator-Windows.exe
+            dist/LinearProgrammingGenerator-Linux
           body: |
-            Кроссплатформенный релиз LP Generator
+            Кроссплатформенный релиз LinearProgrammingGenerator
             Поддерживаемые ОС:
             - Windows 10/11
             - Linux (Ubuntu-based)
