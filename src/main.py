@@ -328,9 +328,10 @@ class Writer:
         doc.preamble.append(Command("usepackage", "geometry"))
         doc.preamble.append(Command("geometry", "top=0.5in, bottom=0.5in, left=0.5in, right=0.5in"))
         doc.preamble.append(Command("usepackage", "babel", "russian"))
-        doc.preamble.append(Command("usepackage", "newtxmath, newtxtext"))
-        #doc.preamble.append(Command("usepackage", "fontspec"))
-        #doc.preamble.append(Command("setmainfont", "Times New Roman"))
+        doc.preamble.append(Command("usepackage", "txfonts"))
+        # doc.preamble.append(Command("usepackage", "newtxmath, newtxtext"))
+        # doc.preamble.append(Command("usepackage", "fontspec"))
+        # doc.preamble.append(Command("setmainfont", "Times New Roman"))
         doc.preamble.append(Command("usepackage", "amsmath"))
         return doc
 
@@ -527,7 +528,8 @@ class Writer:
                     doc = self.WriteTable(doc, solution.solution_second[i])
                 doc.append(NewLine())
             swap = self.swapped_functionals[var_num]
-            doc.append("Оптимальное решение найдено." + (" Необходимо домножить ответ на -1 из-за смены знака функционала." if swap else ""))
+            doc.append("Оптимальное решение найдено." + (
+                " Необходимо домножить ответ на -1 из-за смены знака функционала." if swap else ""))
             doc.append(NewLine())
             doc = self.WritePlot(doc, polygon)
             with doc.create(FlushRight()) as environment:
@@ -543,7 +545,7 @@ class Writer:
 
 
 def Checker(statement: Statement, found_solution: Solution, cnt_steps_first: int, cnt_steps_second: int):
-    if cnt_steps_first != 0 and cnt_steps_first != found_solution.solution_first:
+    if cnt_steps_first != 0 and cnt_steps_first != found_solution.cnt_steps_first:
         raise ValueError("Incorrect count of steps to find acceptable solution")
     if cnt_steps_second != found_solution.cnt_steps_second:
         raise ValueError("Incorrect count of steps")
@@ -556,14 +558,17 @@ def Checker(statement: Statement, found_solution: Solution, cnt_steps_first: int
         raise RuntimeError("Wrong point")
 
 
-def GenerateLinearProgrammingProblems():
-    np.random.seed(10)
+def GenerateLinearProgrammingProblems(n, m, is_zero_allowed, cnt_steps_first, cnt_steps_second, ineq_max_value,
+                                      func_max_value, cnt_statements, path_to_statements, path_to_solutions,
+                                      only_latex):
+    # def GenerateLinearProgrammingProblems():
+    # np.random.seed(10)
     generator = StatementGenerator(n, ineq_max_value, func_max_value, cnt_steps_second, is_zero_allowed)
     solver = Simplex()
     statements = []
     polygons = []
     solutions = []
-    for i in range(cnt_variants):
+    for i in range(cnt_statements):
         print(f"Генерирую вариант № {i + 1}.")
         while True:
             statement, polygon = generator.CreateStatement()
@@ -580,7 +585,9 @@ def GenerateLinearProgrammingProblems():
     writer = Writer(m, is_zero_allowed, only_latex)
     writer.WriteStatement(statements, path_to_statements)
     writer.WriteSolution(statements, list(zip(solutions, polygons)), path_to_solutions)
+    print("Генерация завершилась успешно.")
 
+'''
 if __name__ == "__main__":
     n = int(input("Введите требуемое количество вершин многогранника: \n"))
     m = 2
@@ -590,17 +597,21 @@ if __name__ == "__main__":
     is_zero_allowed = input_zero == 'д'
     cnt_steps_first = 0
     if not is_zero_allowed:
-        cnt_steps_first = int(input("Введите требуемое количество шагов для достижения допустимого решения (0, если это не имеет значения): \n"))
+        cnt_steps_first = int(input(
+            "Введите требуемое количество шагов для достижения допустимого решения (0, если это не имеет значения): \n"))
     cnt_steps_second = int(input("Введите требуемое количество шагов для достижения оптимального решения: \n"))
     ineq_max_value = int(input("Введите верхнее ограничение на значения координат многогранников: \n"))
-    func_max_value = int(input("Введите верхнее ограничение на абсолютные значения коэффициентов в линейном функционале: \n"))
-    cnt_variants = int(input("Введите требуемое количество вариантов работ: \n"))
+    func_max_value = int(
+        input("Введите верхнее ограничение на абсолютные значения коэффициентов в линейном функционале: \n"))
+    cnt_statements = int(input("Введите требуемое количество вариантов работ: \n"))
     path_to_statements = input("Введите название файла с условиями (без расширения): \n")
     path_to_solutions = input("Введите название файла с решениями (без расширения): \n")
-    input_latex = input("Необходимо ли сразу создать pdf файлы на основе файлов tex? (для этого необходимо наличие пути до компилятора xelatex в PATH) [д/н] \n").lower()
+    input_latex = input(
+        "Необходимо ли сразу создать pdf файлы на основе файлов tex? (для этого необходимо наличие пути до компилятора xelatex в PATH) [д/н] \n").lower()
     if input_latex != "д" and input_latex != "н":
         raise ValueError("Необходимо ввести 'д' или 'н'")
     only_latex = input_latex == 'н'
     print("Начинаю генерацию.")
     GenerateLinearProgrammingProblems()
     print("Генерация завершилась успешно.")
+'''
