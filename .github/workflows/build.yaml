@@ -60,7 +60,7 @@ jobs:
           path: dist
 
       - name: Download Linux artifact
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: linux-build
           path: dist
@@ -70,10 +70,10 @@ jobs:
         with:
           tag_name: ${{ github.ref }}
           files: |
-            dist/LP_Generator-Windows.exe
-            dist/LP_Generator-Linux
+            dist/LinearProgrammingGenerator-Windows.exe
+            dist/LinearProgrammingGenerator-Linux
           body: |
-            Кроссплатформенный релиз LP Generator
+            Кроссплатформенный релиз LinearProgrammingGenerator
             Поддерживаемые ОС:
             - Windows 10/11
             - Linux (Ubuntu-based)
