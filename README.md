@@ -3,7 +3,7 @@
 Генератор задач линейного программирования с автоматическим созданием условий и решений в форматах LaTeX/PDF. 
 Идеальный инструмент для преподавателей и студентов!
 
-[![GitHub Releases](https://img.shields.io/github/v/release/yourusername/linear-programming-generator)](https://github.com/yourusername/linear-programming-generator/releases)
+[![GitHub Releases](https://img.shields.io/github/v/release/MrKustic/linear-programming-generator)](https://github.com/MrKustic/linear-programming-generator/releases)
 
 ## ✨ Возможности 
 - Генерация задач с **целочисленными решениями**
