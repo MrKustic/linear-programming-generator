@@ -115,7 +115,7 @@ class StatementGenerator:
         b = np.array([])
         for i in range(n):
             x1 = polygon[i]
-            x2 = polygon[(i + 1) % n]  # (x2.y - x1.y) * x.x + (x1.x - x2.x) * x.y <= x2.x * x1.y - x2.y * x1.x
+            x2 = polygon[(i + 1) % n]
             line = np.array([x2[1] - x1[1], x1[0] - x2[0], -x2[0] * x1[1] + x2[1] * x1[0]])
             g = abs(np.gcd.reduce(line))
             line //= g
@@ -329,9 +329,6 @@ class Writer:
         doc.preamble.append(Command("geometry", "top=0.5in, bottom=0.5in, left=0.5in, right=0.5in"))
         doc.preamble.append(Command("usepackage", "babel", "russian"))
         doc.preamble.append(Command("usepackage", "txfonts"))
-        # doc.preamble.append(Command("usepackage", "newtxmath, newtxtext"))
-        # doc.preamble.append(Command("usepackage", "fontspec"))
-        # doc.preamble.append(Command("setmainfont", "Times New Roman"))
         doc.preamble.append(Command("usepackage", "amsmath"))
         return doc
 
@@ -561,15 +558,12 @@ def Checker(statement: Statement, found_solution: Solution, cnt_steps_first: int
 def GenerateLinearProgrammingProblems(n, m, is_zero_allowed, cnt_steps_first, cnt_steps_second, ineq_max_value,
                                       func_max_value, cnt_statements, path_to_statements, path_to_solutions,
                                       only_latex):
-    # def GenerateLinearProgrammingProblems():
-    # np.random.seed(10)
     generator = StatementGenerator(n, ineq_max_value, func_max_value, cnt_steps_second, is_zero_allowed)
     solver = Simplex()
     statements = []
     polygons = []
     solutions = []
     for i in range(cnt_statements):
-        print(f"Генерирую вариант № {i + 1}.")
         while True:
             statement, polygon = generator.CreateStatement()
             solution = solver.Simplex(statement)
@@ -581,37 +575,6 @@ def GenerateLinearProgrammingProblems(n, m, is_zero_allowed, cnt_steps_first, cn
         statements.append(statement)
         polygons.append(polygon)
         solutions.append(solution)
-    print("Начинаю запись в файлы.")
     writer = Writer(m, is_zero_allowed, only_latex)
     writer.WriteStatement(statements, path_to_statements)
     writer.WriteSolution(statements, list(zip(solutions, polygons)), path_to_solutions)
-    print("Генерация завершилась успешно.")
-
-'''
-if __name__ == "__main__":
-    n = int(input("Введите требуемое количество вершин многогранника: \n"))
-    m = 2
-    input_zero = input("Должно ли (0, 0) являться допустимым решением? [д/н]\n").lower()
-    if input_zero != "д" and input_zero != "н":
-        raise ValueError("Необходимо ввести 'д' или 'н'")
-    is_zero_allowed = input_zero == 'д'
-    cnt_steps_first = 0
-    if not is_zero_allowed:
-        cnt_steps_first = int(input(
-            "Введите требуемое количество шагов для достижения допустимого решения (0, если это не имеет значения): \n"))
-    cnt_steps_second = int(input("Введите требуемое количество шагов для достижения оптимального решения: \n"))
-    ineq_max_value = int(input("Введите верхнее ограничение на значения координат многогранников: \n"))
-    func_max_value = int(
-        input("Введите верхнее ограничение на абсолютные значения коэффициентов в линейном функционале: \n"))
-    cnt_statements = int(input("Введите требуемое количество вариантов работ: \n"))
-    path_to_statements = input("Введите название файла с условиями (без расширения): \n")
-    path_to_solutions = input("Введите название файла с решениями (без расширения): \n")
-    input_latex = input(
-        "Необходимо ли сразу создать pdf файлы на основе файлов tex? (для этого необходимо наличие пути до компилятора xelatex в PATH) [д/н] \n").lower()
-    if input_latex != "д" and input_latex != "н":
-        raise ValueError("Необходимо ввести 'д' или 'н'")
-    only_latex = input_latex == 'н'
-    print("Начинаю генерацию.")
-    GenerateLinearProgrammingProblems()
-    print("Генерация завершилась успешно.")
-'''

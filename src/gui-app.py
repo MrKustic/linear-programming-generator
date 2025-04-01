@@ -11,22 +11,22 @@ class Application(tk.Tk):
     def __init__(self):
         super().__init__()
         self.title("Генератор задач ЛП")
-        self.geometry("1000x900")  # Увеличили высоту для новых ошибок
+        self.geometry("1000x900")
 
         self.create_widgets()
         self.setup_styles()
 
         # Требования для валидации
         self.requirements = [
-            (self.n, self.n_error, 3, 10**9, True),
-            (self.cnt_steps_first_entry, self.cnt_steps_first_error, 0, 10**9, False),
-            (self.cnt_steps_second_entry, self.cnt_steps_second_error, 1, 10**9, True),
+            (self.n, self.n_error, 3, 20, True),
+            (self.cnt_steps_first_entry, self.cnt_steps_first_error, 0, 20, False),
+            (self.cnt_steps_second_entry, self.cnt_steps_second_error, 1, 20, True),
             (self.ineq_max_value_entry, self.ineq_max_error, 1, 10**18, True),
             (self.func_max_value_entry, self.func_max_error, 1, 10**18, True),
-            (self.cnt_statements_entry, self.cnt_statements_error, 1, 10**9, True)
+            (self.cnt_statements_entry, self.cnt_statements_error, 1, 10**5, True)
         ]
 
-        self.additional_requirements = [
+        self.strings_requirements = [
             (self.save_path, self.save_path_error, self.validate_path),
             (self.statements_filename, self.statements_filename_error, self.validate_filename),
             (self.solutions_filename, self.solutions_filename_error, self.validate_filename)
@@ -53,14 +53,12 @@ class Application(tk.Tk):
         main_frame = ttk.Frame(self)
         main_frame.pack(pady=20, padx=20, fill="both", expand=True)
 
-        # Числовые поля
         ttk.Label(main_frame, text="Количество вершин в многоугольнике: ").grid(row=0, column=0, sticky="w")
         self.n = ttk.Entry(main_frame, style="Valid.TEntry")
         self.n.grid(row=0, column=1, sticky="ew", pady=5, padx=5)
         self.n_error = ttk.Label(main_frame, text="", foreground="red")
         self.n_error.grid(row=1, column=0, columnspan=3, sticky="w", padx=5)
 
-        # Чекбокс и связанные поля
         self.is_zero_allowed = tk.IntVar(value=0)
         ttk.Checkbutton(
             main_frame,
@@ -83,7 +81,6 @@ class Application(tk.Tk):
         self.cnt_steps_second_error = ttk.Label(main_frame, text="", foreground="red")
         self.cnt_steps_second_error.grid(row=6, column=0, columnspan=3, sticky="w", padx=5)
 
-        # Ограничения
         ttk.Label(main_frame, text="Верхнее ограничение на значения координат многогранников:").grid(row=7, column=0, sticky='w', pady=5, padx=5)
         self.ineq_max_value_entry = ttk.Entry(main_frame, style="Valid.TEntry")
         self.ineq_max_value_entry.grid(row=7, column=1, sticky='ew', pady=5, padx=5)
@@ -102,7 +99,6 @@ class Application(tk.Tk):
         self.cnt_statements_error = ttk.Label(main_frame, text="", foreground="red")
         self.cnt_statements_error.grid(row=12, column=0, columnspan=3, sticky="w", padx=5)
 
-        # Дополнительные настройки
         self.create_pdf = tk.IntVar(value=0)
         ttk.Checkbutton(
             main_frame,
@@ -110,7 +106,6 @@ class Application(tk.Tk):
             variable=self.create_pdf
         ).grid(row=13, column=0, columnspan=3, pady=5, padx=5, sticky='w')
 
-        # Пути и названия файлов
         ttk.Label(main_frame, text="Папка для сохранения файлов").grid(row=14, column=0, sticky='w', pady=5, padx=5)
         self.save_path = tk.StringVar(value=self.get_default_path())
         tk.Entry(main_frame, textvariable=self.save_path).grid(row=14, column=1, sticky='ew', pady=5, padx=5)
@@ -130,7 +125,6 @@ class Application(tk.Tk):
         self.solutions_filename_error = ttk.Label(main_frame, text="", foreground="red")
         self.solutions_filename_error.grid(row=19, column=0, columnspan=3, sticky='w', padx=5)
 
-        # Управление
         control_frame = ttk.Frame(main_frame)
         control_frame.grid(row=20, column=0, columnspan=4, pady=15, sticky="ew")
         self.run_btn = ttk.Button(control_frame, text="Начать генерацию", command=self.start_process)
@@ -141,7 +135,6 @@ class Application(tk.Tk):
         control_frame.columnconfigure(0, weight=1)
 
     def setup_validations(self):
-        # Валидация числовых полей
         for entry, error_label, min_val, max_val, is_req in self.requirements:
             entry.bind("<FocusOut>",
                        lambda e, el=entry, err=error_label, mn=min_val, mx=max_val, rq=is_req:
@@ -150,13 +143,11 @@ class Application(tk.Tk):
                        lambda e, el=entry, err=error_label, mn=min_val, mx=max_val, rq=is_req:
                        self.validate_number(el, err, mn, mx, rq))
 
-        # Валидация дополнительных полей
-        for var, error_label, validator in self.additional_requirements:
+        for var, error_label, validator in self.strings_requirements:
             var.trace_add(
                 "write",
                 lambda *args, v=var, el=error_label, val=validator: val(v, el)
             )
-            # Первоначальная проверка
             validator(var, error_label)
 
     def validate_number(self, entry_widget, error_label, min_val, max_val, req):
@@ -229,10 +220,9 @@ class Application(tk.Tk):
             self.validate_path(self.save_path, self.save_path_error)
 
     def start_process(self):
-        # Проверка всех валидаций
         validations = [
             *[self.validate_number(*args) for args in self.requirements],
-            *[validator(var, error) for (var, error, validator) in self.additional_requirements]
+            *[validator(var, error) for (var, error, validator) in self.strings_requirements]
         ]
 
         if not all(validations):
@@ -254,7 +244,7 @@ class Application(tk.Tk):
                 "only_latex": not self.create_pdf.get()
             }
 
-            self.operation_timeout = 60
+            self.operation_timeout = 1000
             self.operation_completed = False
 
             self.toggle_ui(False)
